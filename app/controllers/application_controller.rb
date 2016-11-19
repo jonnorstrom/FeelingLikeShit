@@ -2,8 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def check_for_user
-    unless session[:user_id]
-      session[:user_id] = Random.new_seed
+    if !session[:user_id]
+      session[:user_id] = (Random.rand * 1000).floor
     end
+  end
+
+  def current_user
+    return session[:user_id] if session[:user_id]
   end
 end

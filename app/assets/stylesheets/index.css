@@ -1,4 +1,8 @@
-.poop-container h1 {
+.home-container, .rating-container {
+  min-height: 100vh;
+}
+
+.home-container h1 {
   text-align: center;
 }
 
@@ -7,6 +11,22 @@
   border-radius: 5px;
 }
 
-.poop-container p {
+.home-container p {
   font-size: 22px;
+}
+
+.home-container a {
+  color: black;
+}
+
+.hoverable {
+  -webkit-transition: background .5s;
+  transition: background .5s;
+}
+
+.hoverable:hover {
+  background: #8d6e63;
+  /*color: white;*/
+  -webkit-transition: background .5s;
+  transition: background .5s;
 }

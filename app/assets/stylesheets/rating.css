@@ -1,0 +1,24 @@
+.rating-container h1 {
+  text-align: center;
+}
+
+.rating-container h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.rating-container div {
+  /*outline: 1px black solid;*/
+}
+
+.rating-options p {
+  font-size: 22px;
+  padding: 15px;
+  display: inline-block;
+  border: 3px black solid;
+  border-radius: 5px;
+}
+
+.vote-form {
+  display: none;
+}

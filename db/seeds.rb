@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+["Enjoyable","Indifferent","Uncomfortable","Afflictive","Agonizing"].each do |t|
+  Poop.create(desc: t)
+end

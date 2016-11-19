@@ -1,11 +1,11 @@
-<div class="poop-container">
+<div class="home-container">
   <h1>Feeling Like Shit?</h1>
   <div class="row nav-options">
     <div class="col s6">
-      <p class="center-align">Rate my Poop</p>
+      <p class="hoverable center-align"><a href="#poop-rating">Rate my Poop</a></p>
     </div>
     <div class="col s6">
-      <p class="center-align">Give me the facts</p>
+      <p class="hoverable center-align"><a href="#poop-rating">Give me the facts</a></p>
     </div>
   </div>
 
@@ -17,3 +17,38 @@
     <p>All in all, there’s no reason to feel like a piece of shit when we have all this other shit in the world. Keep your spirits up, shitheads.</p>
   </div>
 </div>
+<div id="poop-rating" class="rating-container">
+  <h1>Tell us about your fecal</h1>
+  <% if flash[:vote_errors] %>
+  <div class="container vote-errors">
+  <% flash[:vote_errors].each do |e| %>
+    <p class="center-align"><%= e %></p>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="vote-form">
+    <%= form_for @vote do |f| %>
+    <%= text_field_tag :desc %>
+    <%= f.submit %>
+    <% end %>
+  </div>
+  <div class="row valign-wrapper">
+    <div class="container rating-options valign">
+      <p class="hoverable center-align col m4 offset-m1 offset-s2 s8">Enjoyable</p>
+      <p class="hoverable center-align col m4 offset-m2 offset-s2 s8">Indifferent</p>
+      <p class="hoverable center-align col m4 offset-m1 offset-s2 s8">Uncomfortable</p>
+      <p class="hoverable center-align col m4 offset-m2 offset-s2 s8">Afflictive</p>
+      <p class="hoverable center-align col m4 offset-m4 offset-s2 s8">Agonizing</p>
+    </div>
+  </div>
+  <script>
+    $(".rating-options p").on('click', function(){
+      $(".vote-form input[name='desc']").val($(this).text());
+      $(".vote-form form").submit();
+    })
+  </script>
+  <div class="poop-rating-numbers">
+    <% @poops.each do |poop| %>
+      <p><%= poop.desc %>: <%= poop.votes.count %></p>
+    <% end %>
+  </div>
