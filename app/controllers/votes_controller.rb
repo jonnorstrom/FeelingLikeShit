@@ -10,4 +10,10 @@ class VotesController < ApplicationController
       redirect_to "/#poop-rating", flash: {:vote_errors => @vote_errors}
     end
   end
+
+  def index
+    if request.xhr?
+      render json: Poop.all.order(:id).map{ |poo| poo.votes.length }
+    end
+  end
 end

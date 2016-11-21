@@ -1,3 +1,7 @@
+#poop-rating {
+  padding-top: 20px;
+}
+
 .rating-container h1 {
   text-align: center;
 }
@@ -17,8 +21,35 @@
   display: inline-block;
   border: 3px black solid;
   border-radius: 5px;
+  -webkit-transition: background .5s;
+  transition: background .5s;
 }
 
 .vote-form {
   display: none;
+}
+
+
+#enjoyable {
+  background: #d70206;
+}
+
+#indifferent {
+  background: #f05b4f;
+}
+
+#uncomfortable {
+  background: #f4c63d;
+}
+
+#afflictive {
+  background: #d17905;
+}
+
+#agonizing {
+  background: #453d3f;
+}
+
+#enjoyable:hover, #indifferent:hover, #uncomfortable:hover, #afflictive:hover, #agonizing:hover {
+  background: none;
 }

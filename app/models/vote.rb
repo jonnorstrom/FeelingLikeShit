@@ -8,7 +8,7 @@ class Vote < ApplicationRecord
     if recents.length > 0
       recents.each do |vote|
         if vote.user_id == self.user_id
-          errors.add(:timing, " - Can't vote twice in an hour! You should get that checked out.")
+          errors.add(:timing, " - Can't vote twice in an hour! You should get that shit checked out.")
         end
       end
     end
