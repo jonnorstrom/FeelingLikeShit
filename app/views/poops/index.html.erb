@@ -5,7 +5,7 @@
       <p class="poop-rating-link hoverable center-align"><a href="#poop-rating">Rate my Poop</a></p>
     </div>
     <div class="col s6">
-      <p class="hoverable center-align"><a href="#poop-rating">Give me the facts</a></p>
+      <p class="hoverable center-align"><a href="#poop-facts">Give me the facts</a></p>
     </div>
   </div>
 
@@ -17,6 +17,7 @@
     <p>All in all, there’s no reason to feel like a piece of shit when we have all this other shit in the world. Keep your spirits up, shitheads.</p>
   </div>
 </div>
+
 <div id="poop-rating" class="rating-container">
   <h1>Tell us about your fecal</h1>
   <% if flash[:vote_errors] %>
@@ -45,4 +46,14 @@
     <h4>Total Shits: <%= Vote.all.count %></h4>
   </div>
   <div class="ct-chart ct-perfect-fourth"></div>
+</div>
+
+<div id="poop-facts" class="facts-container row">
+  <div class="center-align">
+    <h1>Some Shitty Facts</h1>
+  </div>
+  <h3>We each make 149g of <%= image_tag('poopy.png', :class => 'poo-image') %> a day!</h3>
+  <h3>Combined - that's about 2.23 billion lbs of <%= image_tag('poopy.png', :class => 'poo-image') %>.</h3>
+  <h3>Aka, that's about 747,000 Toyota Prius's. Or 417 olympic sized pools.</h4>
+  <h3>Or if you're into structures - 114 Eiffel Towers or 47 Statues of Liberty.</h4>
 </div>

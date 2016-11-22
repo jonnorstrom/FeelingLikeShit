@@ -68,10 +68,11 @@ function makeChart(percentages){
 }
 
 function allowSmoothScroll(){
-  $(".poop-rating-link").on('click', function(e){
+  $(".nav-options p").on('click', function(e){
     e.preventDefault();
+    var href = $(this).find('a').attr('href')
     $('html,body').animate({
-     scrollTop: $("#poop-rating").offset().top + 20
+     scrollTop: $(href).offset().top + 20
     });
   })
 }
