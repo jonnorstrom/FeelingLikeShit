@@ -12,43 +12,73 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 
 
 $(document).ready(function(){
   /*Your chartist initialization code here*/
-    $.ajax({url: '/votes'}).success(function(data){
-      var series = data;
-      var percentages = [];
+  $.ajax({url: '/votes'}).success(function(data){setupChartData(data)})
 
-      var total = series.reduce(function(a, b) {
-        return a + b;
-      }, 0);
+  allowSmoothScroll();
 
-      for(var i = 0; i < series.length; i++){
-        percentages.push((series[i]/total)*100)
-      }
-
-      // for(var i = 0; i < percentages.length; i++){
-      //   if (percentages[i] === 0) {
-      //     percentages.splice(i, 1);
-      //     i--
-      //   }
-      // }
-
-      new Chartist.Pie('.ct-chart',
-        {
-          series: percentages
-        },
-        {
-          donut: true,
-          donutWidth: 100,
-          startAngle: 270,
-          total: 200,
-          showLabel: false
-        }
-      );
-    })
+  handlePoopVote();
 });
+
+function setupChartData(data){
+  var series = data;
+  var percentages = [];
+
+  var total = series.reduce(function(a, b) {
+    return a + b;
+  }, 0);
+
+  for(var i = 0; i < series.length; i++){
+    // turns number into a percentage - then multiplies it to get rid of decimals.
+    percentages.push((series[i]/total)*100)
+  }
+
+  makeChart(percentages)
+  // allows the graph to not skip colors when accounting for 0 votes
+  // for(var i = 0; i < percentages.length; i++){
+  //   if (percentages[i] === 0) {
+  //     percentages.splice(i, 1);
+  //     i--
+  //   }
+  // }
+}
+
+function makeChart(percentages){
+  new Chartist.Pie('.ct-chart',
+    {
+      series: percentages
+    },
+    {
+      donut: true,
+      donutWidth: 100,
+      startAngle: 270,
+      total: 200,
+      showLabel: false
+    }
+  );
+
+  // setInterval(function () {
+  //   $(".ct-chart").height( 370 )
+  // }, 20);
+}
+
+function allowSmoothScroll(){
+  $(".poop-rating-link").on('click', function(e){
+    e.preventDefault();
+    $('html,body').animate({
+     scrollTop: $("#poop-rating").offset().top + 20
+    });
+  })
+}
+
+function handlePoopVote() {
+  $(".rating-options p").on('click', function(){
+    $(".vote-form input[name='desc']").val($(this).text());
+    $(".vote-form form").submit();
+  })
+}
